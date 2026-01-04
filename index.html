@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Універсальний Маркет</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; margin: 0; padding: 0; }
+        
+        /* Заголовок з кошиком */
+        header { 
+            background: #2c3e50; color: white; padding: 20px; 
+            display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .cart-link { 
+            background: #f06424; color: white; text-decoration: none; 
+            padding: 10px 20px; border-radius: 25px; font-weight: bold; 
+        }
+
+        /* Реклама */
+        .ads-banner {
+            background: #fff; border: 2px solid #f06424; margin: 20px auto; 
+            max-width: 1100px; display: flex; align-items: center; 
+            justify-content: space-between; padding: 15px; border-radius: 12px;
+            text-decoration: none; color: #333;
+        }
+        .ads-logo { height: 40px; }
+
+        /* Пошук */
+        .search-area { text-align: center; padding: 20px; }
+        #searchInput { 
+            padding: 12px; width: 80%; max-width: 500px; 
+            border-radius: 25px; border: 2px solid #27ae60; outline: none; 
+        }
+
+        main { max-width: 1200px; margin: auto; padding: 20px; }
+        .section-title { border-left: 5px solid #27ae60; padding-left: 15px; margin: 40px 0 20px; }
+        
+        .product-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+        
+        .card { background: white; width: 250px; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .card img { width: 100%; height: 200px; object-fit: cover; }
+        .card-info { padding: 15px; text-align: center; }
+        .price { color: #27ae60; font-size: 1.3em; font-weight: bold; margin: 10px 0; }
+        
+        button { background: #27ae60; color: white; border: none; padding: 10px; width: 100%; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        button:hover { background: #219150; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Універсальний Маркет</h1>
+    <a href="cart.html" class="cart-link">🛒 Кошик (<span id="cartCount">0</span>)</a>
+</header>
+
+<a href="https://freelancehunt.com/my/portfolio" target="_blank" class="ads-banner">
+    <div style="display:flex; align-items:center; gap:15px;">
+        <img src="images/freelancehunt-uk.svg" alt="Logo" class="ads-logo">
+        <span><b>Мій Portfolio!</b> Замовляйте сайти тут</span>
+    </div>
+    <div style="background:#f06424; color:white; padding:8px 15px; border-radius:5px;">Перейти</div>
+</a>
+
+<div class="search-area">
+    <input type="text" id="searchInput" placeholder="Пошук товарів..." onkeyup="searchFunction()">
+</div>
+
+<main>
+    <h2 class="section-title">Фрукти та Овочі</h2>
+    <div class="product-grid">
+        <div class="card" data-keywords="банан фрукти">
+            <img src="images/ба.webp">
+            <div class="card-info">
+                <h3>Банан</h3>
+                <div class="price">40 грн/кг</div>
+                <button onclick="addToCart('Банан', 40, 'images/ба.webp')">В кошик</button>
+            </div>
+        </div>
+        <div class="card" data-keywords="яблука яблуко">
+            <img src="images/яб (3).webp">
+            <div class="card-info">
+                <h3>Яблука</h3>
+                <div class="price">50 грн/кг</div>
+                <button onclick="addToCart('Яблука', 50, 'images/яб (3).webp')">В кошик</button>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="section-title">Посуд</h2>
+    <div class="product-grid">
+        <div class="card" data-keywords="ніж нож">
+            <img src="images/Без названия ніж.jpg">
+            <div class="card-info">
+                <h3>Ніж кухонний</h3>
+                <div class="price">500 грн</div>
+                <button onclick="addToCart('Ніж', 500, 'images/Без названия ніж.jpg')">В кошик</button>
+            </div>
+        </div>
+        <div class="card" data-keywords="тарілка посуд">
+            <img src="images/Без названия тарілка.jpg">
+            <div class="card-info">
+                <h3>Тарілка</h3>
+                <div class="price">100 грн</div>
+                <button onclick="addToCart('Тарілка', 100, 'images/Без названия тарілка.jpg')">В кошик</button>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="section-title">Електроніка</h2>
+    <div class="product-grid">
+        <div class="card" data-keywords="пк компютер">
+            <img src="images/Без названия пк.webp">
+            <div class="card-info">
+                <h3>Ігровий ПК</h3>
+                <div class="price">40000 грн</div>
+                <button onclick="addToCart('Ігровий ПК', 40000, 'images/Без названия пк.webp')">В кошик</button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    function addToCart(name, price, img) {
+        let cart = JSON.parse(localStorage.getItem('myCart')) || [];
+        cart.push({ name, price, img });
+        localStorage.setItem('myCart', JSON.stringify(cart));
+        updateCartCount();
+        alert('Товар додано!');
+    }
+
+    function updateCartCount() {
+        let cart = JSON.parse(localStorage.getItem('myCart')) || [];
+        document.getElementById('cartCount').innerText = cart.length;
+    }
+
+    function searchFunction() {
+        let input = document.getElementById('searchInput').value.toLowerCase();
+        let grids = document.querySelectorAll('.product-grid');
+        let titles = document.querySelectorAll('.section-title');
+
+        grids.forEach((grid, i) => {
+            let cards = grid.querySelectorAll('.card');
+            let hasVisible = false;
+            cards.forEach(card => {
+                let text = card.innerText.toLowerCase() + card.getAttribute('data-keywords');
+                if(text.includes(input)) {
+                    card.style.display = "";
+                    hasVisible = true;
+                } else {
+                    card.style.display = "none";
+                }
+            });
+            titles[i].style.display = hasVisible ? "" : "none";
+            grid.style.display = hasVisible ? "flex" : "none";
+        });
+    }
+
+    window.onload = updateCartCount;
+</script>
+
+</body>
+</html>
