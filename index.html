@@ -1,142 +1,161 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Світ Тварин</title>
-  <style>
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background: #f4f4f9; color: #333; }
-    header { background: #4CAF50; color: white; padding: 40px 20px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    nav { background: #333; text-align: center; position: sticky; top: 0; z-index: 1000; }
-    nav a { color: white; padding: 14px 20px; display: inline-block; text-decoration: none; transition: 0.3s; }
-    nav a:hover { background: #575757; }
-    
-    main { padding: 40px 20px; max-width: 1200px; margin: auto; text-align: center; }
-    
-    #search { 
-      padding: 12px; 
-      width: 100%; 
-      max-width: 400px; 
-      margin-bottom: 30px; 
-      border: 1px solid #ddd; 
-      border-radius: 25px; 
-      outline: none;
-      font-size: 16px;
-    }
-
-    .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-    
-    .animal-card { 
-      background: white; 
-      padding: 0; 
-      border-radius: 12px; 
-      width: 280px; 
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
-    }
-    .animal-card:hover { transform: translateY(-5px); }
-    .animal-card img { width: 100%; height: 200px; object-fit: cover; }
-    .card-content { padding: 15px; }
-    .animal-card h3 { margin: 10px 0; color: #4CAF50; }
-    
-    footer { background: #333; color: white; text-align: center; padding: 20px; margin-top: 40px; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Універсальний Маркет</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; margin: 0; padding: 0; }
+        header { 
+            background: #2c3e50; color: white; padding: 20px; 
+            display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .cart-link { background: #f06424; color: white; text-decoration: none; padding: 10px 20px; border-radius: 25px; font-weight: bold; }
+        .ads-banner {
+            background: #fff; border: 2px solid #f06424; margin: 20px auto; 
+            max-width: 1100px; display: flex; align-items: center; 
+            justify-content: space-between; padding: 15px; border-radius: 12px;
+            text-decoration: none; color: #333;
+        }
+        .search-area { text-align: center; padding: 20px; }
+        #searchInput { padding: 12px; width: 80%; max-width: 500px; border-radius: 25px; border: 2px solid #27ae60; outline: none; }
+        main { max-width: 1200px; margin: auto; padding: 20px; }
+        .section-title { border-left: 5px solid #27ae60; padding-left: 15px; margin: 40px 0 20px; }
+        .product-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+        .card { background: white; width: 250px; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .card img { width: 100%; height: 200px; object-fit: cover; }
+        .card-info { padding: 15px; text-align: center; }
+        .price { color: #27ae60; font-size: 1.3em; font-weight: bold; margin: 10px 0; }
+        button { background: #27ae60; color: white; border: none; padding: 10px; width: 100%; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    </style>
 </head>
 <body>
 
 <header>
-  <h1>Світ Тварин</h1>
-  <p>Дізнайся більше про домашніх та диких тварин</p>
+    <h1>Універсальний Маркет</h1>
+    <a href="cart.html" class="cart-link">🛒 Кошик (<span id="cartCount">0</span>)</a>
 </header>
 
-<nav>
-  <a href="index.html">Головна</a>
-  <a href="catalog.html">Каталог</a>
-  <a href="care.html">Догляд</a>
-  <a href="articles.html">Статті</a>
-  <a href="contact.html">Контакти</a>
-</nav>
+<a href="https://freelancehunt.com/my/portfolio" target="_blank" class="ads-banner">
+    <div style="display:flex; align-items:center; gap:15px;">
+        <img src="images/freelancehunt-uk.svg" alt="Freelancehunt" style="height:40px;">
+        <span><b>Мій Portfolio!</b> Замовляйте сайти тут</span>
+    </div>
+    <div style="background:#f06424; color:white; padding:8px 15px; border-radius:5px;">Перейти</div>
+</a>
+
+<div class="search-area">
+    <input type="text" id="searchInput" placeholder="Пошук (банан, пк, мишка...)" onkeyup="searchFunction()">
+</div>
 
 <main>
-  <h2>Популярні тварини</h2>
-
-  <input type="text" id="search" placeholder="Пошук тварини за назвою..." onkeyup="searchAnimals()">
-
-  <div class="container" id="animalContainer">
-    <div class="animal-card" data-name="Кіт">
-      <img src="Без названия (1).jpg" alt="Кіт">
-      <div class="card-content">
-        <h3>Кіт</h3>
-        <p>Домашній улюбленець, грайливий і ласкавий.</p>
-      </div>
+    <h2 class="section-title">Фрукти та Овочі</h2>
+    <div class="product-grid">
+        <div class="card" data-keywords="банан">
+            <img src="images/ба.webp" alt="Банан">
+            <div class="card-info">
+                <h3>Банан</h3>
+                <div class="price">40 грн/кг</div>
+                <button onclick="addToCart('Банан', 40, 'images/ба.webp')">В кошик</button>
+            </div>
+        </div>
+        <div class="card" data-keywords="яблука">
+            <img src="images/яб (3).webp" alt="Яблука">
+            <div class="card-info">
+                <h3>Яблука</h3>
+                <div class="price">50 грн/кг</div>
+                <button onclick="addToCart('Яблука', 50, 'images/яб (3).webp')">В кошик</button>
+            </div>
+        </div>
+        <div class="card" data-keywords="капуста">
+            <img src="images/Безназвания кап.jpg" alt="Капуста">
+            <div class="card-info">
+                <h3>Капуста</h3>
+                <div class="price">60 грн/кг</div>
+                <button onclick="addToCart('Капуста', 60, 'images/Безназвания кап.jpg')">В кошик</button>
+            </div>
+        </div>
     </div>
 
-    <div class="animal-card" data-name="Собака">
-      <img src="images.webp" alt="Собака">
-      <div class="card-content">
-        <h3>Собака</h3>
-        <p>Вірний друг, охоронець та компаньйон.</p>
-      </div>
+    <h2 class="section-title">Посуд</h2>
+    <div class="product-grid">
+        <div class="card" data-keywords="набір виделок ложок">
+            <img src="images/shoppingнабір .webp" alt="Набір">
+            <div class="card-info">
+                <h3>Набір виделок та ложок</h3>
+                <div class="price">1000 грн</div>
+                <button onclick="addToCart('Набір посуду', 1000, 'images/shoppingнабір .webp')">В кошик</button>
+            </div>
+        </div>
     </div>
 
-    <div class="animal-card" data-name="Папуга">
-      <img src="images (1).webp" alt="Папуга">
-      <div class="card-content">
-        <h3>Папуга</h3>
-        <p>Яскравий птах, любить спілкування та імітацію звуків.</p>
-      </div>
+    <h2 class="section-title">Електроніка</h2>
+    <div class="product-grid">
+        <div class="card" data-keywords="мишка мишь">
+            <img src="images/shoppingмишка (1).webp" alt="Мишка">
+            <div class="card-info">
+                <h3>Ігрова мишка</h3>
+                <div class="price">4000 грн</div>
+                <button onclick="addToCart('Мишка', 4000, 'images/shoppingмишка (1).webp')">В кошик</button>
+            </div>
+        </div>
+        <div class="card" data-keywords="вр окуляри oculus">
+            <img src="images/вр.webp" alt="VR">
+            <div class="card-info">
+                <h3>VR Oculus 3</h3>
+                <div class="price">30000 грн</div>
+                <button onclick="addToCart('VR Oculus', 30000, 'images/вр.webp')">В кошик</button>
+            </div>
+        </div>
+        <div class="card" data-keywords="пк компютер">
+            <img src="images/Безназвания пк.webp" alt="ПК">
+            <div class="card-info">
+                <h3>Ігровий ПК</h3>
+                <div class="price">40000 грн</div>
+                <button onclick="addToCart('Ігровий ПК', 40000, 'images/Безназвания пк.webp')">В кошик</button>
+            </div>
+        </div>
     </div>
-
-    <div class="animal-card" data-name="Єнот">
-      <img src="images enot(2).webp" alt="Єнот">
-      <div class="card-content">
-        <h3>Єнот</h3>
-        <p>Кмітливий пустун, відомий своєю звичкою все мити.</p>
-      </div>
-    </div>
-
-    <div class="animal-card" data-name="Капібара">
-      <img src="images (2).webp" alt="Капібара">
-      <div class="card-content">
-        <h3>Капібара</h3>
-        <p>Найбільший гризун у світі, символ спокою та дружелюбності.</p>
-      </div>
-    </div>
-
-    <div class="animal-card" data-name="Корова">
-      <img src="images korova (2).webp" alt="Корова">
-      <div class="card-content">
-        <h3>Корова</h3>
-        <p>Годувальниця, спокійна та дуже корисна свійська тварина.</p>
-      </div>
-    </div>
-
-    <div class="animal-card" data-name="Лев">
-      <img src="images lev (2).webp" alt="Лев">
-      <div class="card-content">
-        <h3>Лев</h3>
-        <p>Цар звірів, величний хижак та символ сили.</p>
-      </div>
-    </div>
-
-  </div>
 </main>
 
-<footer>
-  <p>&copy; 2026 Світ Тварин. Всі права захищені.</p>
-</footer>
-
 <script>
-  function searchAnimals() {
-    const input = document.getElementById('search').value.toLowerCase();
-    const cards = document.querySelectorAll('.animal-card');
-    
-    cards.forEach(card => {
-      const name = card.getAttribute('data-name').toLowerCase();
-      card.style.display = name.includes(input) ? 'block' : 'none';
-    });
-  }
+    function addToCart(name, price, img) {
+        let cart = JSON.parse(localStorage.getItem('myCart')) || [];
+        cart.push({ name, price, img });
+        localStorage.setItem('myCart', JSON.stringify(cart));
+        updateCartCount();
+        alert('Додано: ' + name);
+    }
+
+    function updateCartCount() {
+        let cart = JSON.parse(localStorage.getItem('myCart')) || [];
+        document.getElementById('cartCount').innerText = cart.length;
+    }
+
+    function searchFunction() {
+        let input = document.getElementById('searchInput').value.toLowerCase();
+        let grids = document.querySelectorAll('.product-grid');
+        let titles = document.querySelectorAll('.section-title');
+
+        grids.forEach((grid, i) => {
+            let cards = grid.querySelectorAll('.card');
+            let hasVisible = false;
+            cards.forEach(card => {
+                let text = card.innerText.toLowerCase() + card.getAttribute('data-keywords');
+                if(text.includes(input)) {
+                    card.style.display = "";
+                    hasVisible = true;
+                } else {
+                    card.style.display = "none";
+                }
+            });
+            titles[i].style.display = hasVisible ? "" : "none";
+            grid.style.display = hasVisible ? "flex" : "none";
+        });
+    }
+
+    window.onload = updateCartCount;
 </script>
 
 </body>
