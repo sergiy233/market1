@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Універсальний маркет – свіжі фрукти та овочі, якісний посуд та сучасна електроніка з доставкою">
+    <meta name="description" content="Універсальний маркет – фрукти, овочі, посуд та електроніка">
     <title>Універсальний Маркет</title>
     <style>
         body {
@@ -33,28 +33,11 @@
             padding: 0.7rem 1.4rem;
             border-radius: 2rem;
             font-weight: 600;
-            transition: background 0.2s;
-        }
-        .cart-link:hover { background: #d35400; }
-        .ads-banner {
-            background: white;
-            border: 2px solid #e67e22;
-            margin: 1.5rem auto;
-            max-width: 1100px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            text-decoration: none;
-            color: #2c3e50;
-            font-weight: 500;
         }
         .search-area {
             text-align: center;
             padding: 1.5rem 5%;
             background: #fff;
-            margin-bottom: 1rem;
         }
         #searchInput {
             padding: 0.9rem 1.2rem;
@@ -75,7 +58,6 @@
             padding-left: 1rem;
             margin: 2.5rem 0 1.5rem;
             font-size: 1.7rem;
-            color: #1a2a3a;
         }
         .product-grid {
             display: grid;
@@ -87,12 +69,9 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transition: transform 0.15s, box-shadow 0.15s;
+            transition: transform 0.15s;
         }
-        .card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-        }
+        .card:hover { transform: translateY(-6px); }
         .card img {
             width: 100%;
             height: 220px;
@@ -116,9 +95,7 @@
             width: 100%;
             border-radius: 8px;
             cursor: pointer;
-            font-size: 1rem;
             font-weight: 600;
-            transition: background 0.2s;
         }
         button:hover { background: #219653; }
     </style>
@@ -130,16 +107,8 @@
     <a href="cart.html" class="cart-link">🛒 Кошик (<span id="cartCount">0</span>)</a>
 </header>
 
-<a href="https://freelancehunt.com/my/portfolio" target="_blank" class="ads-banner">
-    <div style="display:flex; align-items:center; gap:1rem;">
-        <img src="images/freelancehunt-uk.svg" alt="Freelancehunt" style="height:45px;">
-        <span><strong>Мій Portfolio!</strong> Замовляйте сайти та інтернет-магазини тут</span>
-    </div>
-    <div style="background:#e67e22; color:white; padding:0.6rem 1.2rem; border-radius:8px;">Перейти</div>
-</a>
-
 <div class="search-area">
-    <input type="text" id="searchInput" placeholder="Пошук товарів (банан, ніж, мишка, VR, ПК...)" onkeyup="searchFunction()">
+    <input type="text" id="searchInput" placeholder="Пошук: банан, мишка, ніж, VR..." onkeyup="searchFunction()">
 </div>
 
 <main>
@@ -147,11 +116,11 @@
     <h2 class="section-title">Фрукти та Овочі</h2>
     <div class="product-grid">
         <div class="card" data-keywords="банан банани бананчик">
-            <img src="banana.webp" alt="Банан" loading="lazy">
+            <img src="banana.webp" alt="Банани" loading="lazy">
             <div class="card-info">
-                <h3>Банан</h3>
-                <div class="price">42 грн/кг</div>
-                <button onclick="addToCart('Банан', 42, 'banana.webp')">В кошик</button>
+                <h3>Банани</h3>
+                <div class="price">45 грн/кг</div>
+                <button onclick="addToCart('Банани', 45, 'banana.webp')">В кошик</button>
             </div>
         </div>
 
@@ -159,8 +128,8 @@
             <img src="apple.webp" alt="Яблука" loading="lazy">
             <div class="card-info">
                 <h3>Яблука</h3>
-                <div class="price">55 грн/кг</div>
-                <button onclick="addToCart('Яблука', 55, 'apple.webp')">В кошик</button>
+                <div class="price">58 грн/кг</div>
+                <button onclick="addToCart('Яблука', 58, 'apple.webp')">В кошик</button>
             </div>
         </div>
 
@@ -168,68 +137,68 @@
             <img src="cabbage.jpg" alt="Капуста" loading="lazy">
             <div class="card-info">
                 <h3>Капуста</h3>
-                <div class="price">28 грн/кг</div>
-                <button onclick="addToCart('Капуста', 28, 'cabbage.jpg')">В кошик</button>
+                <div class="price">32 грн/кг</div>
+                <button onclick="addToCart('Капуста', 32, 'cabbage.jpg')">В кошик</button>
             </div>
         </div>
     </div>
 
     <h2 class="section-title">Посуд</h2>
     <div class="product-grid">
-        <div class="card" data-keywords="набір посуду виделки ложки столові прибори">
+        <div class="card" data-keywords="cutlery набір посуду виделки ложки прибори">
             <img src="cutlery.webp" alt="Набір столових приборів" loading="lazy">
             <div class="card-info">
-                <h3>Набір виделок та ложок (12 шт)</h3>
-                <div class="price">980 грн</div>
-                <button onclick="addToCart('Набір посуду', 980, 'cutlery.webp')">В кошик</button>
+                <h3>Набір столових приборів</h3>
+                <div class="price">950 грн</div>
+                <button onclick="addToCart('Набір столових приборів', 950, 'cutlery.webp')">В кошик</button>
             </div>
         </div>
 
-        <div class="card" data-keywords="ніж ножі кухонний">
+        <div class="card" data-keywords="knife ніж ножі кухонний">
             <img src="knife.jpg" alt="Кухонний ніж" loading="lazy">
             <div class="card-info">
-                <h3>Кухонний ніж преміум</h3>
-                <div class="price">320 грн</div>
-                <button onclick="addToCart('Кухонний ніж', 320, 'knife.jpg')">В кошик</button>
+                <h3>Кухонний ніж</h3>
+                <div class="price">380 грн</div>
+                <button onclick="addToCart('Кухонний ніж', 380, 'knife.jpg')">В кошик</button>
             </div>
         </div>
 
-        <div class="card" data-keywords="тарілка тарілки обідня посуд">
+        <div class="card" data-keywords="plate тарілка тарілки обідня">
             <img src="plate.jpg" alt="Обідня тарілка" loading="lazy">
             <div class="card-info">
-                <h3>Обідня тарілка (біла)</h3>
-                <div class="price">145 грн</div>
-                <button onclick="addToCart('Тарілка', 145, 'plate.jpg')">В кошик</button>
+                <h3>Обідня тарілка</h3>
+                <div class="price">160 грн</div>
+                <button onclick="addToCart('Обідня тарілка', 160, 'plate.jpg')">В кошик</button>
             </div>
         </div>
     </div>
 
     <h2 class="section-title">Електроніка</h2>
     <div class="product-grid">
-        <div class="card" data-keywords="мишка миша мишь геймерська ігрова">
+        <div class="card" data-keywords="mouse мишка миша геймерська ігрова">
             <img src="mouse.webp" alt="Ігрова мишка" loading="lazy">
             <div class="card-info">
-                <h3>Ігрова мишка RGB</h3>
-                <div class="price">1 890 грн</div>
-                <button onclick="addToCart('Ігрова мишка', 1890, 'mouse.webp')">В кошик</button>
+                <h3>Ігрова мишка</h3>
+                <div class="price">2200 грн</div>
+                <button onclick="addToCart('Ігрова мишка', 2200, 'mouse.webp')">В кошик</button>
             </div>
         </div>
 
-        <div class="card" data-keywords="vr окуляри віртуальна реальність oculus quest">
+        <div class="card" data-keywords="vr окуляри віртуальна реальність vr oculus">
             <img src="vr.webp" alt="VR-окуляри" loading="lazy">
             <div class="card-info">
-                <h3>VR Oculus Quest 3</h3>
-                <div class="price">23 990 грн</div>
-                <button onclick="addToCart('VR Oculus', 23990, 'vr.webp')">В кошик</button>
+                <h3>VR-окуляри</h3>
+                <div class="price">24990 грн</div>
+                <button onclick="addToCart('VR-окуляри', 24990, 'vr.webp')">В кошик</button>
             </div>
         </div>
 
-        <div class="card" data-keywords="пк комп'ютер компютер ігровий геймерський">
+        <div class="card" data-keywords="pc пк комп'ютер компютер ігровий">
             <img src="pc.webp" alt="Ігровий ПК" loading="lazy">
             <div class="card-info">
-                <h3>Ігровий ПК RTX 4070</h3>
-                <div class="price">52 000 грн</div>
-                <button onclick="addToCart('Ігровий ПК', 52000, 'pc.webp')">В кошик</button>
+                <h3>Ігровий ПК</h3>
+                <div class="price">58900 грн</div>
+                <button onclick="addToCart('Ігровий ПК', 58900, 'pc.webp')">В кошик</button>
             </div>
         </div>
     </div>
