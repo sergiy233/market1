@@ -3,248 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Універсальний маркет – фрукти, овочі, посуд та електроніка">
     <title>Універсальний Маркет</title>
     <style>
-        body {
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            background-color: #f5f7f5;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
-        header {
-            background: #1a2a3a;
-            color: white;
-            padding: 1.2rem 5%;
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; margin: 0; padding: 0; }
+        header { background: #2c3e50; color: white; padding: 30px; text-align: center; }
+        
+        /* Стилі для реклами */
+        .ads-banner {
+            background: #ffffff;
+            border: 2px solid #f06424;
+            margin: 20px auto;
+            max-width: 1160px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-        }
-        h1 { margin: 0; font-size: 1.8rem; }
-        .cart-link {
-            background: #e67e22;
-            color: white;
-            text-decoration: none;
-            padding: 0.7rem 1.4rem;
-            border-radius: 2rem;
-            font-weight: 600;
-        }
-        .search-area {
-            text-align: center;
-            padding: 1.5rem 5%;
-            background: #fff;
-        }
-        #searchInput {
-            padding: 0.9rem 1.2rem;
-            width: 100%;
-            max-width: 600px;
-            border-radius: 999px;
-            border: 2px solid #27ae60;
-            font-size: 1.1rem;
-            outline: none;
-        }
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 5% 3rem;
-        }
-        .section-title {
-            border-left: 5px solid #27ae60;
-            padding-left: 1rem;
-            margin: 2.5rem 0 1.5rem;
-            font-size: 1.7rem;
-        }
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 1.5rem;
-        }
-        .card {
-            background: white;
+            justify-content: space-between;
+            padding: 15px 30px;
             border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transition: transform 0.15s;
+            text-decoration: none;
+            color: #333;
+            transition: 0.3s;
         }
-        .card:hover { transform: translateY(-6px); }
-        .card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-        }
-        .card-info {
-            padding: 1.2rem;
-            text-align: center;
-        }
-        .price {
-            color: #27ae60;
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin: 0.6rem 0;
-        }
-        button {
-            background: #27ae60;
-            color: white;
-            border: none;
-            padding: 0.9rem;
-            width: 100%;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-        }
-        button:hover { background: #219653; }
+        .ads-banner:hover { transform: scale(1.01); box-shadow: 0 5px 15px rgba(240, 100, 36, 0.2); }
+        .ads-content { display: flex; align-items: center; gap: 20px; }
+        .ads-logo { height: 40px; }
+        .ads-text b { color: #f06424; font-size: 1.1em; }
+
+        nav { background: #34495e; text-align: center; position: sticky; top: 0; z-index: 1000; }
+        nav a { color: white; padding: 15px 20px; display: inline-block; text-decoration: none; font-weight: bold; }
+        nav a:hover { background: #27ae60; }
+
+        main { max-width: 1200px; margin: 20px auto; padding: 20px; }
+        .section-title { border-left: 5px solid #27ae60; padding-left: 15px; margin: 40px 0 20px; color: #2c3e50; }
+        
+        .product-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+        
+        .card { background: white; width: 250px; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); }
+        .card img { width: 100%; height: 180px; object-fit: cover; }
+        
+        .card-info { padding: 15px; text-align: center; }
+        .card-info h3 { margin: 10px 0; font-size: 1.1em; height: 45px; overflow: hidden; }
+        .price { color: #27ae60; font-size: 1.3em; font-weight: bold; margin: 10px 0; }
+        .unit { font-size: 0.7em; color: #7f8c8d; }
+        
+        button { background: #27ae60; color: white; border: none; padding: 10px; width: 100%; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        button:hover { background: #219150; }
+
+        footer { text-align: center; padding: 20px; background-color: #2c3e50; color: white; margin-top: 40px; }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Універсальний Маркет</h1>
-    <a href="cart.html" class="cart-link">🛒 Кошик (<span id="cartCount">0</span>)</a>
+    <h1>Мій Універсальний Магазин</h1>
+    <p>Все від фруктів до сучасної електроніки</p>
 </header>
 
-<div class="search-area">
-    <input type="text" id="searchInput" placeholder="Пошук: банан, мишка, ніж, VR..." onkeyup="searchFunction()">
-</div>
+<a href="https://freelancehunt.com/my/portfolio" target="_blank" class="ads-banner">
+    <div class="ads-content">
+        <img src="logo.svg" alt="Freelancehunt" class="ads-logo">
+        <div class="ads-text">
+            <b>Замовляйте розробку сайтів!</b><br>
+            Перегляньте моє портфоліо на Freelancehunt
+        </div>
+    </div>
+    <div style="background: #f06424; color: white; padding: 8px 15px; border-radius: 5px; font-weight: bold;">Перейти</div>
+</a>
+
+<nav>
+    <a href="#food">Фрукти та Овочі</a>
+    <a href="#kitchen">Посуд</a>
+    <a href="#tech">Електроніка</a>
+</nav>
 
 <main>
 
-    <h2 class="section-title">Фрукти та Овочі</h2>
+    <h2 id="food" class="section-title">Фрукти та Овочі</h2>
     <div class="product-grid">
-        <div class="card" data-keywords="банан банани бананчик">
-            <img src="banana.webp" alt="Банани" loading="lazy">
+        <div class="card">
+            <img src="banana.webp" alt="Банан">
             <div class="card-info">
-                <h3>Банани</h3>
-                <div class="price">45 грн/кг</div>
-                <button onclick="addToCart('Банани', 45, 'banana.webp')">В кошик</button>
+                <h3>Банан</h3>
+                <div class="price">40 грн <span class="unit">/кг</span></div>
+                <button>Додати</button>
             </div>
         </div>
-
-        <div class="card" data-keywords="яблуко яблука яблучко">
-            <img src="apple.webp" alt="Яблука" loading="lazy">
+        <div class="card">
+            <img src="apple.webp" alt="Яблука">
             <div class="card-info">
                 <h3>Яблука</h3>
-                <div class="price">58 грн/кг</div>
-                <button onclick="addToCart('Яблука', 58, 'apple.webp')">В кошик</button>
+                <div class="price">50 грн <span class="unit">/кг</span></div>
+                <button>Додати</button>
             </div>
         </div>
-
-        <div class="card" data-keywords="капуста капусти качан">
-            <img src="cabbage.jpg" alt="Капуста" loading="lazy">
+        <div class="card">
+            <img src="cabbage.jpg" alt="Капуста">
             <div class="card-info">
                 <h3>Капуста</h3>
-                <div class="price">32 грн/кг</div>
-                <button onclick="addToCart('Капуста', 32, 'cabbage.jpg')">В кошик</button>
+                <div class="price">60 грн <span class="unit">/кг</span></div>
+                <button>Додати</button>
             </div>
         </div>
     </div>
 
-    <h2 class="section-title">Посуд</h2>
+    <h2 id="kitchen" class="section-title">Посуд</h2>
     <div class="product-grid">
-        <div class="card" data-keywords="cutlery набір посуду виделки ложки прибори">
-            <img src="cutlery.webp" alt="Набір столових приборів" loading="lazy">
+        <div class="card">
+            <img src="cutlery.webp" alt="Набір виделок та ложок">
             <div class="card-info">
-                <h3>Набір столових приборів</h3>
-                <div class="price">950 грн</div>
-                <button onclick="addToCart('Набір столових приборів', 950, 'cutlery.webp')">В кошик</button>
+                <h3>Набір виделок та ложок</h3>
+                <div class="price">1000 грн</div>
+                <button>Додати</button>
             </div>
         </div>
-
-        <div class="card" data-keywords="knife ніж ножі кухонний">
-            <img src="knife.jpg" alt="Кухонний ніж" loading="lazy">
+        <div class="card">
+            <img src="knife.jpg" alt="Ніж">
             <div class="card-info">
-                <h3>Кухонний ніж</h3>
-                <div class="price">380 грн</div>
-                <button onclick="addToCart('Кухонний ніж', 380, 'knife.jpg')">В кошик</button>
+                <h3>Ніж кухонний</h3>
+                <div class="price">500 грн</div>
+                <button>Додати</button>
             </div>
         </div>
-
-        <div class="card" data-keywords="plate тарілка тарілки обідня">
-            <img src="plate.jpg" alt="Обідня тарілка" loading="lazy">
+        <div class="card">
+            <img src="plate.jpg" alt="Тарілка">
             <div class="card-info">
-                <h3>Обідня тарілка</h3>
-                <div class="price">160 грн</div>
-                <button onclick="addToCart('Обідня тарілка', 160, 'plate.jpg')">В кошик</button>
+                <h3>Тарілка</h3>
+                <div class="price">100 грн</div>
+                <button>Додати</button>
             </div>
         </div>
     </div>
 
-    <h2 class="section-title">Електроніка</h2>
+    <h2 id="tech" class="section-title">Електроніка</h2>
     <div class="product-grid">
-        <div class="card" data-keywords="mouse мишка миша геймерська ігрова">
-            <img src="mouse.webp" alt="Ігрова мишка" loading="lazy">
+        <div class="card">
+            <img src="mouse.webp" alt="Мишка">
             <div class="card-info">
                 <h3>Ігрова мишка</h3>
-                <div class="price">2200 грн</div>
-                <button onclick="addToCart('Ігрова мишка', 2200, 'mouse.webp')">В кошик</button>
+                <div class="price">4000 грн</div>
+                <button>Додати</button>
             </div>
         </div>
-
-        <div class="card" data-keywords="vr окуляри віртуальна реальність vr oculus">
-            <img src="vr.webp" alt="VR-окуляри" loading="lazy">
+        <div class="card">
+            <img src="vr.webp" alt="Oculus 3">
             <div class="card-info">
-                <h3>VR-окуляри</h3>
-                <div class="price">24990 грн</div>
-                <button onclick="addToCart('VR-окуляри', 24990, 'vr.webp')">В кошик</button>
+                <h3>Oculus Quest 3</h3>
+                <div class="price">30000 грн</div>
+                <button>Додати</button>
             </div>
         </div>
-
-        <div class="card" data-keywords="pc пк комп'ютер компютер ігровий">
-            <img src="pc.webp" alt="Ігровий ПК" loading="lazy">
+        <div class="card">
+            <img src="pc.webp" alt="ПК">
             <div class="card-info">
                 <h3>Ігровий ПК</h3>
-                <div class="price">58900 грн</div>
-                <button onclick="addToCart('Ігровий ПК', 58900, 'pc.webp')">В кошик</button>
+                <div class="price">40000 грн</div>
+                <button>Додати</button>
             </div>
         </div>
     </div>
 
 </main>
 
-<script>
-    function addToCart(name, price, img) {
-        let cart = JSON.parse(localStorage.getItem('myCart')) || [];
-        cart.push({ name, price, img });
-        localStorage.setItem('myCart', JSON.stringify(cart));
-        updateCartCount();
-        alert(`Додано: ${name}`);
-    }
-
-    function updateCartCount() {
-        let cart = JSON.parse(localStorage.getItem('myCart')) || [];
-        document.getElementById('cartCount').innerText = cart.length;
-    }
-
-    function searchFunction() {
-        const input = document.getElementById('searchInput').value.toLowerCase().trim();
-        const sections = document.querySelectorAll('.product-grid');
-        const titles = document.querySelectorAll('.section-title');
-
-        sections.forEach((grid, index) => {
-            let visible = false;
-            const cards = grid.querySelectorAll('.card');
-
-            cards.forEach(card => {
-                const text = (card.innerText + ' ' + (card.dataset.keywords || '')).toLowerCase();
-                if (text.includes(input)) {
-                    card.style.display = '';
-                    visible = true;
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-
-            titles[index].style.display = visible ? '' : 'none';
-            grid.style.display = visible ? 'grid' : 'none';
-        });
-    }
-
-    window.onload = updateCartCount;
-</script>
+<footer>
+    <p>&copy; 2026 Універсальний Маркет. Всі права захищені.</p>
+</footer>
 
 </body>
 </html>
