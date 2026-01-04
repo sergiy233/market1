@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Ваш кошик</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f7f6; padding: 20px; }
+        .cart-container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .cart-item { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #ddd; padding: 15px 0; }
+        .cart-item img { width: 70px; height: 70px; object-fit: cover; border-radius: 5px; }
+        .total { font-size: 1.5em; font-weight: bold; text-align: right; margin-top: 20px; }
+        .btn { padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; text-decoration: none; display: inline-block; }
+        .btn-clear { background: #e74c3c; color: white; }
+        .btn-back { background: #34495e; color: white; margin-right: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="cart-container">
+    <h1>🛒 Ваш кошик</h1>
+    <div id="cart-list">
+        </div>
+    <div class="total">Разом: <span id="cart-total">0</span> грн</div>
+    <hr>
+    <a href="index.html" class="btn btn-back">← Назад до магазину</a>
+    <button onclick="clearCart()" class="btn btn-clear">Очистити кошик</button>
+</div>
+
+<script>
+    function renderCart() {
+        const cart = JSON.parse(localStorage.getItem('userCart')) || [];
+        const list = document.getElementById('cart-list');
+        let total = 0;
+
+        if (cart.length === 0) {
+            list.innerHTML = "<h3>Кошик порожній</h3>";
+            document.getElementById('cart-total').innerText = 0;
+            return;
+        }
+
+        list.innerHTML = cart.map((item, index) => {
+            total += item.price;
+            return `
+                <div class="cart-item">
+                    <img src="${item.img}" alt="">
+                    <div style="flex-grow: 1; margin-left: 20px;">
+                        <strong>${item.name}</strong>
+                    </div>
+                    <div style="margin-right: 20px;">${item.price} грн</div>
+                    <button onclick="removeItem(${index})" style="background:none; border:none; cursor:pointer; font-size: 1.2em;">❌</button>
+                </div>
+            `;
+        }).join('');
+
+        document.getElementById('cart-total').innerText = total;
+    }
+
+    function removeItem(index) {
+        let cart = JSON.parse(localStorage.getItem('userCart')) || [];
+        cart.splice(index, 1);
+        localStorage.setItem('userCart', JSON.stringify(cart));
+        renderCart();
+    }
+
+    function clearCart() {
+        localStorage.removeItem('userCart');
+        renderCart();
+    }
+
+    window.onload = renderCart;
+</script>
+</body>
+</html>
