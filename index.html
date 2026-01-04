@@ -3,31 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Універсальний маркет – свіжі фрукти та овочі, якісний посуд та сучасна електроніка з доставкою">
     <title>Універсальний Маркет</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; margin: 0; padding: 0; }
-        header { 
-            background: #2c3e50; color: white; padding: 20px; 
-            display: flex; justify-content: space-between; align-items: center;
-            position: sticky; top: 0; z-index: 1000;
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: #f5f7f5;
+            margin: 0;
+            padding: 0;
+            color: #333;
         }
-        .cart-link { background: #f06424; color: white; text-decoration: none; padding: 10px 20px; border-radius: 25px; font-weight: bold; }
+        header {
+            background: #1a2a3a;
+            color: white;
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+        h1 { margin: 0; font-size: 1.8rem; }
+        .cart-link {
+            background: #e67e22;
+            color: white;
+            text-decoration: none;
+            padding: 0.7rem 1.4rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .cart-link:hover { background: #d35400; }
         .ads-banner {
-            background: #fff; border: 2px solid #f06424; margin: 20px auto; 
-            max-width: 1100px; display: flex; align-items: center; 
-            justify-content: space-between; padding: 15px; border-radius: 12px;
-            text-decoration: none; color: #333;
+            background: white;
+            border: 2px solid #e67e22;
+            margin: 1.5rem auto;
+            max-width: 1100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
         }
-        .search-area { text-align: center; padding: 20px; }
-        #searchInput { padding: 12px; width: 80%; max-width: 500px; border-radius: 25px; border: 2px solid #27ae60; outline: none; }
-        main { max-width: 1200px; margin: auto; padding: 20px; }
-        .section-title { border-left: 5px solid #27ae60; padding-left: 15px; margin: 40px 0 20px; }
-        .product-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
-        .card { background: white; width: 250px; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .card img { width: 100%; height: 200px; object-fit: cover; }
-        .card-info { padding: 15px; text-align: center; }
-        .price { color: #27ae60; font-size: 1.3em; font-weight: bold; margin: 10px 0; }
-        button { background: #27ae60; color: white; border: none; padding: 10px; width: 100%; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        .search-area {
+            text-align: center;
+            padding: 1.5rem 5%;
+            background: #fff;
+            margin-bottom: 1rem;
+        }
+        #searchInput {
+            padding: 0.9rem 1.2rem;
+            width: 100%;
+            max-width: 600px;
+            border-radius: 999px;
+            border: 2px solid #27ae60;
+            font-size: 1.1rem;
+            outline: none;
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5% 3rem;
+        }
+        .section-title {
+            border-left: 5px solid #27ae60;
+            padding-left: 1rem;
+            margin: 2.5rem 0 1.5rem;
+            font-size: 1.7rem;
+            color: #1a2a3a;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        .card-info {
+            padding: 1.2rem;
+            text-align: center;
+        }
+        .price {
+            color: #27ae60;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin: 0.6rem 0;
+        }
+        button {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 0.9rem;
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        button:hover { background: #219653; }
     </style>
 </head>
 <body>
@@ -38,85 +131,109 @@
 </header>
 
 <a href="https://freelancehunt.com/my/portfolio" target="_blank" class="ads-banner">
-    <div style="display:flex; align-items:center; gap:15px;">
-        <img src="images/freelancehunt-uk.svg" alt="Freelancehunt" style="height:40px;">
-        <span><b>Мій Portfolio!</b> Замовляйте сайти тут</span>
+    <div style="display:flex; align-items:center; gap:1rem;">
+        <img src="images/freelancehunt-uk.svg" alt="Freelancehunt" style="height:45px;">
+        <span><strong>Мій Portfolio!</strong> Замовляйте сайти та інтернет-магазини тут</span>
     </div>
-    <div style="background:#f06424; color:white; padding:8px 15px; border-radius:5px;">Перейти</div>
+    <div style="background:#e67e22; color:white; padding:0.6rem 1.2rem; border-radius:8px;">Перейти</div>
 </a>
 
 <div class="search-area">
-    <input type="text" id="searchInput" placeholder="Пошук (банан, пк, мишка...)" onkeyup="searchFunction()">
+    <input type="text" id="searchInput" placeholder="Пошук товарів (банан, ніж, мишка, VR, ПК...)" onkeyup="searchFunction()">
 </div>
 
 <main>
+
     <h2 class="section-title">Фрукти та Овочі</h2>
     <div class="product-grid">
-        <div class="card" data-keywords="банан">
-            <img src="images/ба.webp" alt="Банан">
+        <div class="card" data-keywords="банан банани бананчик">
+            <img src="banana.webp" alt="Банан" loading="lazy">
             <div class="card-info">
                 <h3>Банан</h3>
-                <div class="price">40 грн/кг</div>
-                <button onclick="addToCart('Банан', 40, 'images/ба.webp')">В кошик</button>
+                <div class="price">42 грн/кг</div>
+                <button onclick="addToCart('Банан', 42, 'banana.webp')">В кошик</button>
             </div>
         </div>
-        <div class="card" data-keywords="яблука">
-            <img src="images/яб (3).webp" alt="Яблука">
+
+        <div class="card" data-keywords="яблуко яблука яблучко">
+            <img src="apple.webp" alt="Яблука" loading="lazy">
             <div class="card-info">
                 <h3>Яблука</h3>
-                <div class="price">50 грн/кг</div>
-                <button onclick="addToCart('Яблука', 50, 'images/яб (3).webp')">В кошик</button>
+                <div class="price">55 грн/кг</div>
+                <button onclick="addToCart('Яблука', 55, 'apple.webp')">В кошик</button>
             </div>
         </div>
-        <div class="card" data-keywords="капуста">
-            <img src="images/Безназвания кап.jpg" alt="Капуста">
+
+        <div class="card" data-keywords="капуста капусти качан">
+            <img src="cabbage.jpg" alt="Капуста" loading="lazy">
             <div class="card-info">
                 <h3>Капуста</h3>
-                <div class="price">60 грн/кг</div>
-                <button onclick="addToCart('Капуста', 60, 'images/Безназвания кап.jpg')">В кошик</button>
+                <div class="price">28 грн/кг</div>
+                <button onclick="addToCart('Капуста', 28, 'cabbage.jpg')">В кошик</button>
             </div>
         </div>
     </div>
 
     <h2 class="section-title">Посуд</h2>
     <div class="product-grid">
-        <div class="card" data-keywords="набір виделок ложок">
-            <img src="images/shoppingнабір .webp" alt="Набір">
+        <div class="card" data-keywords="набір посуду виделки ложки столові прибори">
+            <img src="cutlery.webp" alt="Набір столових приборів" loading="lazy">
             <div class="card-info">
-                <h3>Набір виделок та ложок</h3>
-                <div class="price">1000 грн</div>
-                <button onclick="addToCart('Набір посуду', 1000, 'images/shoppingнабір .webp')">В кошик</button>
+                <h3>Набір виделок та ложок (12 шт)</h3>
+                <div class="price">980 грн</div>
+                <button onclick="addToCart('Набір посуду', 980, 'cutlery.webp')">В кошик</button>
+            </div>
+        </div>
+
+        <div class="card" data-keywords="ніж ножі кухонний">
+            <img src="knife.jpg" alt="Кухонний ніж" loading="lazy">
+            <div class="card-info">
+                <h3>Кухонний ніж преміум</h3>
+                <div class="price">320 грн</div>
+                <button onclick="addToCart('Кухонний ніж', 320, 'knife.jpg')">В кошик</button>
+            </div>
+        </div>
+
+        <div class="card" data-keywords="тарілка тарілки обідня посуд">
+            <img src="plate.jpg" alt="Обідня тарілка" loading="lazy">
+            <div class="card-info">
+                <h3>Обідня тарілка (біла)</h3>
+                <div class="price">145 грн</div>
+                <button onclick="addToCart('Тарілка', 145, 'plate.jpg')">В кошик</button>
             </div>
         </div>
     </div>
 
     <h2 class="section-title">Електроніка</h2>
     <div class="product-grid">
-        <div class="card" data-keywords="мишка мишь">
-            <img src="images/shoppingмишка (1).webp" alt="Мишка">
+        <div class="card" data-keywords="мишка миша мишь геймерська ігрова">
+            <img src="mouse.webp" alt="Ігрова мишка" loading="lazy">
             <div class="card-info">
-                <h3>Ігрова мишка</h3>
-                <div class="price">4000 грн</div>
-                <button onclick="addToCart('Мишка', 4000, 'images/shoppingмишка (1).webp')">В кошик</button>
+                <h3>Ігрова мишка RGB</h3>
+                <div class="price">1 890 грн</div>
+                <button onclick="addToCart('Ігрова мишка', 1890, 'mouse.webp')">В кошик</button>
             </div>
         </div>
-        <div class="card" data-keywords="вр окуляри oculus">
-            <img src="images/вр.webp" alt="VR">
+
+        <div class="card" data-keywords="vr окуляри віртуальна реальність oculus quest">
+            <img src="vr.webp" alt="VR-окуляри" loading="lazy">
             <div class="card-info">
-                <h3>VR Oculus 3</h3>
-                <div class="price">30000 грн</div>
-                <button onclick="addToCart('VR Oculus', 30000, 'images/вр.webp')">В кошик</button>
+                <h3>VR Oculus Quest 3</h3>
+                <div class="price">23 990 грн</div>
+                <button onclick="addToCart('VR Oculus', 23990, 'vr.webp')">В кошик</button>
             </div>
         </div>
-        <div class="card" data-keywords="пк компютер">
-            <img src="images/Безназвания пк.webp" alt="ПК">
+
+        <div class="card" data-keywords="пк комп'ютер компютер ігровий геймерський">
+            <img src="pc.webp" alt="Ігровий ПК" loading="lazy">
             <div class="card-info">
-                <h3>Ігровий ПК</h3>
-                <div class="price">40000 грн</div>
-                <button onclick="addToCart('Ігровий ПК', 40000, 'images/Безназвания пк.webp')">В кошик</button>
+                <h3>Ігровий ПК RTX 4070</h3>
+                <div class="price">52 000 грн</div>
+                <button onclick="addToCart('Ігровий ПК', 52000, 'pc.webp')">В кошик</button>
             </div>
         </div>
     </div>
+
 </main>
 
 <script>
@@ -125,7 +242,7 @@
         cart.push({ name, price, img });
         localStorage.setItem('myCart', JSON.stringify(cart));
         updateCartCount();
-        alert('Додано: ' + name);
+        alert(`Додано: ${name}`);
     }
 
     function updateCartCount() {
@@ -134,24 +251,26 @@
     }
 
     function searchFunction() {
-        let input = document.getElementById('searchInput').value.toLowerCase();
-        let grids = document.querySelectorAll('.product-grid');
-        let titles = document.querySelectorAll('.section-title');
+        const input = document.getElementById('searchInput').value.toLowerCase().trim();
+        const sections = document.querySelectorAll('.product-grid');
+        const titles = document.querySelectorAll('.section-title');
 
-        grids.forEach((grid, i) => {
-            let cards = grid.querySelectorAll('.card');
-            let hasVisible = false;
+        sections.forEach((grid, index) => {
+            let visible = false;
+            const cards = grid.querySelectorAll('.card');
+
             cards.forEach(card => {
-                let text = card.innerText.toLowerCase() + card.getAttribute('data-keywords');
-                if(text.includes(input)) {
-                    card.style.display = "";
-                    hasVisible = true;
+                const text = (card.innerText + ' ' + (card.dataset.keywords || '')).toLowerCase();
+                if (text.includes(input)) {
+                    card.style.display = '';
+                    visible = true;
                 } else {
-                    card.style.display = "none";
+                    card.style.display = 'none';
                 }
             });
-            titles[i].style.display = hasVisible ? "" : "none";
-            grid.style.display = hasVisible ? "flex" : "none";
+
+            titles[index].style.display = visible ? '' : 'none';
+            grid.style.display = visible ? 'grid' : 'none';
         });
     }
 
